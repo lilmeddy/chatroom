@@ -1,0 +1,68 @@
+Django is a python framework for web development. It is used for backend.
+Learning it for model in machine learning sha 
+Always create a virtual environment
+virtual environment is where everything you install is stored
+to install a virtual environmanet pip install virtualenv 
+to create a virtual environment "virtualenv demon"
+To run django install to our global machine by using pip (pip install django)
+
+to activate "source demon/bin/activate" for mac while for windows demon\scripts\activate
+then install django to the enivronment "pip install django"
+then you have access to django admin function
+check using django-admin
+then you have access to all and 
+use startproject
+then add the name django-admin startproject "todoLiat"
+cd todoLiat
+python manage.py then the administrative function  moves here
+python manage.py runserver to start it 
+templates are the html files we work with shaa
+create your template folder in your base directory go to your settings and add it to template Dir [base_dir / the name of the folder]
+to render your html from django.shortcut import render 
+that's to display e.g def home(request): return render(request,"home.html")
+
+
+create an app with startapp 
+create a url inside the app (note apps are like components shaa)
+then connect both url (using the include function in the base url file)
+the view is the file we store the functions that get triggered when you navigate to a url 
+while working on normal shit use httpResponse 
+templates are the html files we work with shaa
+create your template folder in your base directory go to your settings and add it to template Dir [base_dir / the name of the folder]
+
+Django admin panel
+by default you get access to the django admin panel use /admin
+createsuper user
+do something called make migaration python manage.py make migaration 
+    python manage.py migrate
+
+Django model: model is a representation of your database you want to create
+    we create a model and add things we want to show on our data base and in your  app create a class in the model.py 
+    whenever you make a change you migrate to db.sqlite3 python manage.py makemigrations
+    python manage.py migrate.
+    to make it show go to admin and register it there admin.site.register("nameofmodel")
+    then use the str method 
+to display it in your front end, it will return a query set then put it in your html shaa in your views
+to access variable use two curlybraces {{}}
+to perform forloop use templateliteral {%%} to end use {%endfor%}
+Querying our database python manage.py shell to do python work
+from todoapp.models import *
+todo = Todo.object.get(title = "wfe")
+todo.body
+todo.id
+to quit use quit()
+Dynamic routing senior olodo isn't sure about the name lol ) path("alltodo/<str:pk>")
+it can me string or int:pk the pk is like the placeholder while str is to specify type
+csrf -- cross side request fruad
+for registration use form sha
+Mr Nath said we are working with only backend and now he is teaching styles (Frontend) so I can ask any question i likeee 
+Yipeeeeeeeee yayyyyyyyyyyyyy
+title__icontains =search 
+
+Mr Nath promised us pizza on monday
+class base view
+
+
+
+
+Dynamic and static and if they will change 

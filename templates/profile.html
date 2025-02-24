@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}				
+		
+			<!-- PAGE (all pages go inside this div) -->
+			<div class="techwave_fn_page">
+				
+				<!-- User Profile Page -->
+				<div class="techwave_fn_user_profile_page">
+					<!-- Page Title -->
+					<div class="techwave_fn_pagetitle">
+						<h2 class="title">User Profile</h2>
+					</div>
+					<!-- !Page Title -->
+				
+					<div class="container small">
+						<div class="techwave_fn_user_profile">
+
+							<div class="user__profile">
+								<div class="user_avatar">
+									<img src="{{profile.profile_picture.url}}" alt="">
+								</div>
+								<div class="user_details">
+									<ul>
+										{% if profile.name %}
+										<li>
+											<div class="item">
+												<h4 class="subtitle">Name</h4>
+												<h3 class="title">{{profile.name}}</h3>
+											</div>
+										</li>
+										{% else %}
+										<li>
+											<div class="item">
+												<h4 class="subtitle">Name</h4>
+												<h3 class="title">No name set</h3>
+											</div>
+										</li>
+										{% endif %}
+										<li>
+											<div class="item">
+												<h4 class="subtitle">Username</h4>
+												<h3 class="title">@{{profile.user.username}}</h3>
+											</div>
+										</li>
+										<li>
+											<div class="item">
+												<h4 class="subtitle">Email Address</h4>
+												<h3 class="title">{{profile.user.email}}</h3>
+											</div>
+										</li>
+									</ul>
+								</div>
+								{% if request.user == profile.user %}
+								<a href="{% url 'settings' profile.profile_id %}" class="user_edit fn__icon_button">
+									<img src="{% static 'svg/setting.svg' %}" alt="" class="fn__svg">
+								</a>
+								{% endif %}
+							</div>
+
+							<div class="user__plan">
+								{% if profile.bio %}
+								<div class="plan_left">
+									<h4 class="subtitle">Your Bio</h4>
+									<p class="info"><span>{{profile.bio}}</span></p>
+								</div>
+								{% else %}
+								<div class="plan_left">
+									<h4 class="subtitle">No Bio yet</h4>
+								</div>
+								{% endif %}
+							</div>
+
+							<!-- <div class="user__interests">
+								<h4 class="title">What are your interests?</h4>
+								<div class="fn__options_list">
+									<ul>
+										<li>
+											<a href="#" class="techwave_fn_button small__border enabled">
+												<span>Advertising</span>
+											</a>
+										</li>
+										<li>
+											<a href="#" class="techwave_fn_button small__border disabled">
+												<span>Architecture</span>
+											</a>
+										</li>
+										<li>
+											<a href="#" class="techwave_fn_button small__border disabled">
+												<span>Art</span>
+											</a>
+										</li>
+										<li>
+											<a href="#" class="techwave_fn_button small__border disabled">
+												<span>Education</span>
+											</a>
+										</li>
+										<li>
+											<a href="#" class="techwave_fn_button small__border disabled">
+												<span>Fashion</span>
+											</a>
+										</li>
+										<li>
+											<a href="#" class="techwave_fn_button small__border disabled">
+												<span>Film TV</span>
+											</a>
+										</li>
+										<li>
+											<a href="#" class="techwave_fn_button small__border disabled">
+												<span>Interior</span>
+											</a>
+										</li>
+										<li>
+											<a href="#" class="techwave_fn_button small__border enabled">
+												<span>Marketing</span>
+											</a>
+										</li>
+										<li>
+											<a href="#" class="techwave_fn_button small__border disabled">
+												<span>Graphics</span>
+											</a>
+										</li>
+										<li>
+											<a href="#" class="techwave_fn_button small__border disabled">
+												<span>Games</span>
+											</a>
+										</li>
+										<li>
+											<a href="#" class="techwave_fn_button small__border disabled">
+												<span>Stock Images</span>
+											</a>
+										</li>
+										<li>
+											<a href="#" class="techwave_fn_button small__border disabled">
+												<span>Other</span>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div> -->
+
+						</div>
+					</div>
+					
+				</div>
+				<!-- !User Profile Page -->
+				
+			</div>
+			<!-- !PAGE (all pages go inside this div) -->
+			
+			
+{% endblock %}

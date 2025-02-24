@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+{% include 'ss.html' %}
+<!-- PAGE (all pages go inside this div) -->
+<div class="techwave_fn_page">
+
+    <!-- Home Page -->
+    <div class="techwave_fn_home">
+        <div class="section_home" style="min-height: 100% !important;">
+            <!-- AI Chat Bot Page -->
+            <div class="techwave_fn_aichatbot_page fn__chatbot">
+
+                <div class="chat__page">
+
+                    <div class="font__trigger" style="right: 100px;">
+                        <span></span>
+                    </div>
+
+                    <div class="fn__title_holder">
+                        <div class="container">
+                            <!-- Active chat title -->
+                            <h1 class="title">{{room.name}}</h1>
+                            <p>{{room.description}}</p>
+                            {% if room.documents %}
+                            <div style="display: flex; gap: 15px;">
+                                <p>Download Attached File</p>
+                                <a href="{{room.documents.url}}" download="{{ room.documents.name }}"> {{room.documents.name}}</a>
+                            </div>
+                            {% endif %}
+                            <!-- !Active chat title -->
+                        </div>
+                    </div>
+
+                    <div class="container" style="min-width: 900px;">
+                        <div class="chat__list">
+
+                            <div id="chat" class="chat__item"></div>
+
+                            <div class="chat__item active" id="chat1">
+                                {% for msg in messages %}
+                                {% if msg.owner == request.user %}
+                                <div class="chat__box your__chat">
+                                    <div class="author"><span>You</span></div>
+                                    <div class="chat">
+                                        <p>{{msg.body}}</p>
+                                    </div>
+                                </div>
+                                {% else %}
+                                <div class="chat__box bot__chat">
+                                    <div class="author"><span>{{msg.owner}}</span></div>
+                                    <div class="chat">
+                                        <p>{{msg.body}}</p>
+                                    </div>
+                                </div>
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+
+                            <div class="chat__item" id="chat2"></div>
+
+                            <div class="chat__item" id="chat3"></div>
+
+                            <div class="chat__item" id="chat4"></div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="chat__comment">
+                        <div class="container">
+                            <div class="fn__chat_comment">
+                                <div class="new__chat">
+                                    <p>Ask it questions, engage in discussions, or simply enjoy a friendly chat.</p>
+                                </div>
+                               <form action="" method="POST">
+                                {% csrf_token %}
+                                    <textarea rows="1" placeholder="Send a message..." name="room_msg"></textarea>
+                                    <button>Submit</button>
+                               </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+              
+            </div>
+            <!-- !AI Chat Bot Page -->
+
+        </div>
+    </div>
+    <!-- !Home Page -->
+
+</div>
+<!-- !PAGE (all pages go inside this div) -->
+
+
+{% endblock %}

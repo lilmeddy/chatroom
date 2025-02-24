@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}		
+			
+		
+			<!-- PAGE (all pages go inside this div) -->
+			<div class="techwave_fn_page">
+				
+				<!-- Home Page -->
+				<div class="techwave_fn_home">
+					<div class="section_home">
+						<div class="section_left">
+							
+							<!-- Title Shortcode -->
+							<div class="techwave_fn_title_holder">
+								<h1 class="title">Collaborate with other developers</h1>
+								<p class="desc">Generate your ideas into stunning visuals</p>
+							</div>
+							<!-- !Title Shortcode -->
+							
+							<!-- Interactive List Shortcode -->
+							<div class="techwave_fn_interactive_list modern">
+								<ul>
+									{% for room in rooms %}
+									<li>
+										<div class="item" style="position: relative;">
+											{% if request.user == room.owner %}
+											<div style="position: absolute; left: 24%; display: flex; font-size: 12px; bottom: 8px; gap: 5px;">
+												<a href="{% url 'edit' room.id %}" style="margin: 0; padding: 0; width: auto;">Edit</a>
+												<a href="{% url 'delete' room.id %}" style="margin: 0; padding: 0; width: auto;">Delete</a>
+											</div>
+											{% endif %}
+											<a href="{% url 'roomdetails' room.id %}">
+												<!-- <span class="icon">
+													<img src="{{room.owner.topic_user.profile_picture.url}}" alt="" class="fn__svg">
+												</span> -->
+												<img src="{{room.owner.topic_user.profile_picture.url}}" alt="" class="icon" style="object-fit: cover;">
+												<div class="title" style="display: flex; flex-direction: column; text-align: left; align-items: flex-start;">
+													<h2 style="font-size: 20px; margin: 0; padding: 0;">{{room.name}}</h2>
+													<p style="font-size: 13px; margin: 0; padding: 0;"> {{room.created|timesince}} ago</p>
+												</div>
+												<span class="arrow"><img src="{% static 'svg/arrow.svg' %}" alt="" class="fn__svg"></span>
+											</a>
+											<div style="display: flex; justify-content: flex-end; color: gray;">
+												 <a href="{% url 'profile' room.owner.topic_user.profile_id %}" style="padding: 0; height: auto; display: block; min-height: auto; margin-top: -30px; margin-right: 25px; color: gray; font-size: 12px;">@ {{room.owner}}</a>
+											</div>
+										</div>
+									</li>
+									{% endfor %}
+								</ul>
+							</div>
+							<!-- !Interactive List Shortcode -->
+							
+						</div>
+						<div class="section_right">
+							<div class="company_info">
+								<img src="{% static 'img/logo-desktop-full.png' %}" alt="">
+								<p class="fn__animated_text">The official server of TECH-AI, a text-to-image AI where your imagination is the only limit. We’re building market-leading features that will give you greater control over your generations.</p>
+								<hr>
+								<div class="fn__members">
+									<div class="active item">
+										<span class="circle"></span>
+										<span class="text">1,154,694 Online</span>
+									</div>
+									<div class="item">
+										<span class="circle"></span>
+										<span class="text">77,345,912 Members</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- !Home Page -->
+				
+			</div>
+			<!-- !PAGE (all pages go inside this div) -->
+			
+		
+{% endblock %}

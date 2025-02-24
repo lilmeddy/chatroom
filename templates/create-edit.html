@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}	
+
+<div class="container small">
+    <div class="techwave_fn_user_settings techwave_fn_user_profile">
+        <form method="POST" class="user__plan" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="user__settings" style="width: 100%;">
+                <div class="settings_right" style="max-width: 100% !important;">
+                    <div class="item">
+                        <label class="input_label" for="name">Topic Name</label>
+                        <div class="input_item">
+                            <input class="input" type="text" id="name" value="{{room.topic.name}}" placeholder="Enter your name" name="topic_name" list="topic-list">
+                            <datalist id="topic-list">
+                                {% for topic in topics %}
+                                <option value="{{topic.name}}">{{topic.name}}</option>
+                                {% endfor %}
+                            </datalist>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <label class="input_label" for="email">Room Name</label>
+                        <div class="input_item">
+                            <input class="input" type="text" id="email" value="{{room.name}}" name="room_name" required>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <label class="input_label" for="bio">Room Description</label>
+                        <div class="input_item">
+                            <textarea class="input" id="bio" name="room_description">{{room.description}}</textarea>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <input type="file" name="document_file" id="document_file">
+                    </div>
+                    <div class="item">
+                        <label class="fn__submit">
+                            <input type="submit" value="Submit">
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
