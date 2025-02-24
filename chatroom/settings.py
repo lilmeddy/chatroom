@@ -11,13 +11,13 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-from environ import Env
-
+import environ
+import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-env = Env()
-Env.read_env()
+env = environ.Env()
+environ.Env.read_env()
 
 
 # Quick-start development settings - unsuitable for production
@@ -25,6 +25,7 @@ Env.read_env()
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = env('SECRET_KEY')
+# print(SECRET_KEY)
 
 SECRET_KEY = "django-insecure-1wjh*_&m2&cg2!qqd7#73n3()_smfmet9$v#%yjp=l6mrk*m38"
 
@@ -90,6 +91,19 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+DATABASES['default'] = dj_database_url.parse("postgresql://chat_room_xywg_user:YR5q7fJMKksZ82U5JZwm8QG6OqMHNgAU@dpg-cuu7v2i3esus73egqk90-a.oregon-postgres.render.com/chat_room_xywg")
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'chat_room_xywg',
+#         'USER': 'chat_room_xywg_user',
+#         'PASSWORD': 'YR5q7fJMKksZ82U5JZwm8QG6OqMHNgAU',
+#         'HOST': 'dpg-cuu7v2i3esus73egqk90-a',
+#         'PORT': '5432',  # Default PostgreSQL port
+#     }
+# }
 
 
 # Password validation
